@@ -8,12 +8,6 @@ pipeline {
 
   stages {
 
-    stage('Clone Repo') {
-      steps {
-        git 'https://github.com/fardeenk123/Modern-News-Website.git'
-      }
-    }
-
     stage('Build Docker Image') {
       steps {
         sh 'docker build -t newsapp .'
@@ -26,7 +20,7 @@ pipeline {
         aws ecr get-login-password --region $AWS_REGION | \
         docker login --username AWS --password-stdin $ECR_REPO
 
-        docker tag demo-app:latest $ECR_REPO:latest
+        docker tag newsapp:latest $ECR_REPO:latest
         docker push $ECR_REPO:latest
         '''
       }
