@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: news-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: newapp
+  ports:
+    - port: 80
+      targetPort: 80

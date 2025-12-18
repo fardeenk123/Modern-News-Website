@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: newapp
+  template:
+    metadata:
+      labels:
+        app: newapp
+    spec:
+      containers:
+      - name: newapp
+        image: 370445361629.dkr.ecr.us-east-1.amazonaws.com/newrepo:latest
+        ports:
+        - containerPort: 80
