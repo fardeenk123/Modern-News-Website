@@ -7,6 +7,7 @@ pipeline {
         ECR_REPO = "newrepo"
         IMAGE_NAME = "newsapp"
         IMAGE_TAG = "${BUILD_NUMBER}"
+        DEPLOYMENT = "newsapp"
     }
 
     stages {
@@ -68,7 +69,9 @@ pipeline {
             echo '✅ Deployment completed successfully'
         }
         failure {
-            echo '❌ Deployment failed'
+            echo '❌ Deployment failed Rolling back to previous Version...'
+            sh 'kubectl rollout undo deployment/$DEPLOYMENT'
+            
         }
     }
 }
