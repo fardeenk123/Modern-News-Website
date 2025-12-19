@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: newapp
-        image: 891377221285.dkr.ecr.us-east-1.amazonaws.com/newrepo:latest
+        image: 891377221285.dkr.ecr.us-east-1.amazonaws.com/newrepo:IMAGE_TAG
         ports:
         - containerPort: 80
